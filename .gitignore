@@ -1,0 +1,119 @@
+# ============================================
+# BUILD ARTIFACTS & DEPENDENCIES
+# ============================================
+
+# Java/Maven
+target/
+*.class
+*.jar
+!gradle-wrapper.jar
+*.war
+*.ear
+*.nar
+.mvn/wrapper/maven-wrapper.jar
+
+# PHP/Composer
+vendor/
+bootstrap/cache/
+
+# Node.js
+node_modules/
+dist/
+build/
+.next/
+out/
+
+# ============================================
+# ENVIRONMENT & SECRETS
+# ============================================
+
+.env
+.env.local
+.env.*.local
+*.local.php
+*-secret.yaml
+secrets/
+
+# ============================================
+# IDE & EDITOR FILES
+# ============================================
+
+# IntelliJ IDEA
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/dictionaries/
+.idea/shelf/
+.idea/httpRequests/
+.idea/sonarlint/
+
+# Keep shared team settings
+!.idea/codeStyles/
+!.idea/inspectionProfiles/
+!.idea/runConfigurations/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# ============================================
+# RUNTIME & LOGS
+# ============================================
+
+logs/
+*.log
+*.pid
+*.seed
+*.tmp
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+
+# ============================================
+# OS FILES
+# ============================================
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ============================================
+# DOCKER & KUBERNETES (LOCAL DEV)
+# ============================================
+
+# Don't ignore Dockerfiles or K8s manifests!
+# But ignore local override files
+docker-compose.override.yml
+.kube/config
+
+# ============================================
+# TESTING & COVERAGE
+# ============================================
+
+coverage/
+.phpunit.result.cache
+*.cover
+.nyc_output/
+
+# ============================================
+# TEMPORARY & CACHE
+# ============================================
+
+*.swp
+*.swo
+*~
+.cache/
+.temp/
+tmp/

@@ -1,0 +1,67 @@
+# ============================================
+# AUTO-DETECT TEXT FILES & NORMALIZE TO LF
+# ============================================
+* text=auto
+
+# ============================================
+# SOURCE CODE - EXPLICIT TEXT FILES
+# ============================================
+
+# Java
+*.java text
+*.kt text
+*.gradle text
+*.properties text
+
+# PHP
+*.php text
+*.blade.php text
+
+# JavaScript/TypeScript
+*.js text
+*.ts text
+*.jsx text
+*.tsx text
+*.json text
+
+# Configuration
+*.yaml text
+*.yml text
+*.xml text
+*.toml text
+*.ini text
+
+# Documentation
+*.md text
+*.txt text
+
+# Shell scripts - MUST use LF (critical for Docker)
+*.sh text eol=lf
+*.bash text eol=lf
+
+# ============================================
+# BINARY FILES - NEVER MODIFY
+# ============================================
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.jar binary
+*.zip binary
+*.tar.gz binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# ============================================
+# BETTER DIFFS FOR STRUCTURED DATA
+# ============================================
+
+*.json diff=json
+composer.lock diff=json
+package-lock.json diff=json
+pom.xml diff=xml
