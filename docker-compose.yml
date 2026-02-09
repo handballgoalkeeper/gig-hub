@@ -1,28 +1,38 @@
 services:
-  postgres-user:
-    image: postgres:17-alpine
-    container_name: gighub-postgres-user
+  postgres:
+    image: postgres:18.1-trixie
+    container_name: gighub-postgres
     environment:
-      POSTGRES_DB: userdb
-      POSTGRES_USER: userservice
+      POSETGRES_DB: postgres
+      POSTGRES_USER: gighub
       POSTGRES_PASSWORD: dev_password_123
     ports:
       - "5432:5432"
     volumes:
-      - postgres-user-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
+      - ./infrastructure/docker/init-databases.sh:/docker-entrypoint-initdb.d/init-databases.sh
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gighub -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       - gighub-network
 
   redis:
-    image: redis:7.4-alpine
+    image: redis:8.4-alpine
     container_name: gighub-redis
     ports:
       - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
     networks:
       - gighub-network
-
   rabbitmq:
-    image: rabbitmq:4.0-management-alpine
+    image: rabbitmq:4.3-management-alpine
     container_name: gighub-rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: gighub
@@ -30,11 +40,17 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       - gighub-network
 
 volumes:
-  postgres-user-data:
+  postgres-data:
+    driver: local
 
 networks:
   gighub-network:
