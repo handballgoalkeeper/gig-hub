@@ -1,0 +1,27 @@
+{
+  "name": "infrastructure",
+  "projectType": "application",
+  "targets": {
+    "up": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "infrastructure/docker",
+        "command": "docker compose -f compose.base.yml -f compose.postgres.yml --env-file env/.env up -d"
+      }
+    },
+    "down": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "infrastructure/docker",
+        "command": "docker compose -f compose.base.yml -f compose.postgres.yml --env-file env/.env down"
+      }
+    },
+    "reset": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "infrastructure/docker",
+        "command": "docker compose -f compose.base.yml -f compose.postgres.yml --env-file env/.env down -v"
+      }
+    }
+  }
+}
