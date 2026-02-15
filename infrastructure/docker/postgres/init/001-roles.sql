@@ -1,0 +1,1 @@
+CREATE ROLE user_user LOGIN PASSWORD 'Dev_password_123$';

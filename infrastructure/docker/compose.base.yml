@@ -1,0 +1,8 @@
+name: gig-hub-infrastructure
+
+networks:
+  edge:
+    driver: bridge
+  internal:
+    driver: bridge
+    internal: true
