@@ -1,5 +1,16 @@
 {
   "installation": {
     "version": "22.5.1"
+  },
+  "targetDefaults": {
+    "up": {
+      "cache": false
+    },
+    "down": {
+      "cache": false
+    },
+    "reset": {
+      "cache": false
+    }
   }
 }
