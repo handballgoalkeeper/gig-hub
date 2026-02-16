@@ -1,0 +1,16 @@
+.claude
+.idea
+.junie
+vendor
+.dockerignore
+.editorconfig
+.env
+.env.example
+.gitattributes
+.gitignore
+.mcp.json
+boost.json
+CLAUDE.md
+Dockerfile
+package.json
+README.md

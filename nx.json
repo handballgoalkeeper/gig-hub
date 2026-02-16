@@ -11,6 +11,12 @@
     },
     "reset": {
       "cache": false
+    },
+    "exec": {
+      "cache": false
+    },
+    "build": {
+      "cache": false
     }
   }
 }

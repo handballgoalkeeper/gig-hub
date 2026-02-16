@@ -1,0 +1,27 @@
+services:
+  infra-redis:
+    image: redis:8.4-trixie
+    container_name: infra-redis
+    restart: unless-stopped
+
+    env_file:
+      - ./env/.env
+
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - redis-data:/data
+
+    command: >
+      sh -c 'redis-server /usr/local/etc/redis/redis.conf --requirepass "${REDIS_PASSWORD}"'
+
+    networks:
+      - internal
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  redis-data:
