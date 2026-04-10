@@ -1,1 +1,2 @@
 CREATE ROLE user_user LOGIN PASSWORD 'Dev_password_123$';
+CREATE ROLE auth_user LOGIN PASSWORD 'Dev_password_123$';

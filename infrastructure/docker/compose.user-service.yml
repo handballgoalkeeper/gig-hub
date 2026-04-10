@@ -10,9 +10,6 @@ services:
       - user-service-bootstrap-cache:/var/www/bootstrap/cache
     env_file:
       - ./../../services/user-service/.env
-    depends_on:
-      - infra-postgres
-      - infra-redis
 
   user-service-nginx:
     image: nginx:1.29.5-alpine

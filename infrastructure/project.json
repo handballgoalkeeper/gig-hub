@@ -1,40 +1,48 @@
 {
   "name": "infrastructure",
   "projectType": "application",
+  "sourceRoot": "infrastructure",
   "targets": {
-    "up": {
+    "infra-up": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "infrastructure/docker",
-        "command": "docker compose -f compose.base.yml -f compose.postgres.yml -f compose.user-service.yml -f compose.redis.yml --env-file env/.env up -d"
+        "command": "docker compose -f compose.base.yml -f compose.postgres.yml -f compose.redis.yml --env-file env/.env up -d"
       }
     },
-    "down": {
+    "infra-down": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "infrastructure/docker",
-        "command": "docker compose -f compose.base.yml -f compose.postgres.yml -f compose.user-service.yml -f compose.redis.yml --env-file env/.env down"
+        "command": "docker compose -f compose.base.yml -f compose.postgres.yml -f compose.redis.yml --env-file env/.env down"
       }
     },
-    "reset": {
+    "infra-reset": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "infrastructure/docker",
-        "command": "docker compose -f compose.base.yml -f compose.postgres.yml -f compose.user-service.yml -f compose.redis.yml --env-file env/.env down -v"
+        "command": "docker compose -f compose.base.yml -f compose.postgres.yml -f composer.redis.yml --env-file env/.env down -v"
       }
     },
-    "exec": {
+    "services-up": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "infrastructure/docker",
-        "command": "docker compose -f compose.base.yml -f compose.postgres.yml -f compose.user-service.yml -f compose.redis.yml --env-file env/.env exec"
+        "command": "docker compose -f compose.base.yml -f compose.auth-service.yml -f compose.user-service.yml --env-file env/.env up --build -d"
       }
     },
-    "build": {
+    "services-down": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "infrastructure/docker",
-        "command": "docker compose -f compose.base.yml -f compose.postgres.yml -f compose.user-service.yml -f compose.redis.yml --env-file env/.env build"
+        "command": "docker compose -f compose.base.yml -f compose.auth-service.yml -f compose.user-service.yml --env-file env/.env down"
+      }
+    },
+    "services-reset": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "infrastructure/docker",
+        "command": "docker compose -f compose.base.yml -f compose.auth-service.yml -f compose.user-service.yml --env-file env/.env down -v"
       }
     }
   }

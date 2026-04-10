@@ -1,0 +1,14 @@
+services:
+  auth-service:
+    build: ./../../services/auth-service
+    container_name: auth-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://infra-postgres:5432/${AUTH_DB_NAME}
+      SPRING_DATASOURCE_USERNAME: ${AUTH_DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${AUTH_DB_PASSWORD}
+      SPRING_PROFILE_ACTIVE: docker
+    networks:
+      - internal
+      - edge
+    ports:
+      - "8002:8080"
